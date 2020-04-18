@@ -1,0 +1,71 @@
+{
+  "token_transaction": "3768d38ba76cb0d6763de0950cd88e76",
+  "transaction": {
+    "order_number": "1551032077",
+    "free": "|POST| |checkout|",
+    "transaction_id": "15785269",
+    "status_name": "Aprovada",
+    "status_id": "6",
+    "date_transaction": "2019-02-24T15:18:02",
+    "split": "9",
+    "price_payment": "1050.0",
+    "date_payment": "2019-02-24T15:18:05",
+    "seller_token": "6ef59c6e8dcb7d9",
+    "transaction_token": "3768d38ba76cb0d6763de0950cd88e76",
+    "token_transaction": "3768d38ba76cb0d6763de0950cd88e76",
+    "price_seller": "966.0",
+    "price_original": "1050.0",
+    "price_additional": "0.0",
+    "price_discount": "0.0",
+    "shipping_price": "0",
+    "shipping_type": "",
+    "payment_method_id": "16",
+    "payment_method_name": "Elo",
+    "products": [
+      {
+        "code": "1549244704460",
+        "description": "Master Class - Helder Marucci / João Pessoa - Master Class - Helder Marucci / João Pessoa",
+        "extra": "",
+        "price_unit": "1050.0",
+        "quantity": "1.0"
+      }
+    ],
+    "customer": {
+      "name": "Thyago Franklin da Silva Soares",
+      "cpf": "04676606460",
+      "email": "thyago380@yahoo.com.br",
+      "token": "8343a473145fa74",
+      "address": {
+        "street": "Dr.Nunes Filho",
+        "number": "125",
+        "neighborhood": "Bela Vista",
+        "postal_code": "58200000",
+        "completion": "",
+        "city": "Guarabira",
+        "state": "PB"
+      }
+    },
+    "company": {
+      "name": "Bárbara Lopes Milani",
+      "cpf": "",
+      "cnpj": "32325769000176",
+      "contact": "14991199008",
+      "url": "http://www.barbaramilani.com",
+      "token": "6ef59c6e8dcb7d9"
+    },
+    "payment": {
+      "price_payment": "1050.0",
+      "payment_response": "",
+      "url_payment": "",
+      "date_approval": "25/02/2019 - 16:38:01",
+      "selling_message": "",
+      "number_of_voucher_sales": "",
+      "split": "9",
+      "date_payment": "24/02/2019",
+      "payment_method_id": "16",
+      "payment_method_name": "Elo",
+      "card_id": "7012919",
+      "number_proccess": "27844965"
+    }
+  }
+}

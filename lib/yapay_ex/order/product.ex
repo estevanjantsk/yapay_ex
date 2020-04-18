@@ -3,6 +3,7 @@ defmodule YapayEx.Order.Product do
   Product struct definition.
   """
 
+  @derive Jason.Encoder
   @enforce_keys ~w(description quantity price_unit code)a
   defstruct ~w(description quantity price_unit code)a
 

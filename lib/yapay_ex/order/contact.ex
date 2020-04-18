@@ -3,6 +3,7 @@ defmodule YapayEx.Order.Contact do
   Contact struct definition.
   """
 
+  @derive Jason.Encoder
   @enforce_keys ~w(type_contact number_contact)a
   defstruct type_contact: "H", number_contact: nil
 

@@ -3,6 +3,7 @@ defmodule YapayEx.Order.Transaction do
   Transaction struct definition.
   """
 
+  @derive Jason.Encoder
   @enforce_keys ~w(customer_ip url_notification)a
   defstruct ~w(customer_ip url_notification)a
 

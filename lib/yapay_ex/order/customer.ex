@@ -5,6 +5,7 @@ defmodule YapayEx.Order.Customer do
 
   alias YapayEx.Order.{Address, Contact}
 
+  @derive Jason.Encoder
   @enforce_keys ~w(contacts name cpf email addresses)a
   defstruct ~w(contacts addresses name cpf email)a
 

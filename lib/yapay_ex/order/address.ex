@@ -3,6 +3,7 @@ defmodule YapayEx.Order.Address do
   Address struct definition.
   """
 
+  @derive Jason.Encoder
   @enforce_keys ~w(type_address postal_code street number neighborhood city state)a
   defstruct ~w(type_address postal_code street number completion neighborhood city state)a
 

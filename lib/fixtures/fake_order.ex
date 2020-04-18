@@ -1,8 +1,17 @@
-defmodule Fixtures.Order do
+defmodule Fixtures.FakeOrder do
+  @moduledoc """
+  Add functions that create fake orders for test purpose
+  """
+
   alias YapayEx.{Order, PaymentMethods}
 
-  alias Yapay.Order.{
-    Address, Customer, Payment Payment, Product, Transaction
+  alias YapayEx.Order.{
+    Address,
+    Contact,
+    Customer,
+    Payment,
+    Product,
+    Transaction
   }
 
   def credit_card do
@@ -16,7 +25,7 @@ defmodule Fixtures.Order do
       :payment,
       %Payment{
         payment_method_id: @bankslip_code,
-        billet_date_expiration: billet_date_expiration
+        billet_date_expiration: "18/08/2020"
       }
     )
   end
@@ -25,6 +34,15 @@ defmodule Fixtures.Order do
     %Order{
       token_account: "xxxxx",
       customer: %Customer{
+        cpf: "16970449050",
+        email: "tony.stark@avengers.com",
+        name: "Tony Stark",
+        contacts: [
+          %Contact{
+            type_contact: "H",
+            number_contact: "14991233244"
+          }
+        ],
         addresses: [
           %Address{
             type_address: "B",

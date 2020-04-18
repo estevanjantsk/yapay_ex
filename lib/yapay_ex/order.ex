@@ -3,6 +3,7 @@ defmodule YapayEx.Order do
   Order struct definition.
   """
 
+  @derive Jason.Encoder
   @enforce_keys ~w(token_account customer transaction_product transaction payment)a
   defstruct ~w(token_account customer transaction_product transaction payment)a
 

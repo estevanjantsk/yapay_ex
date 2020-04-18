@@ -1,0 +1,32 @@
+{
+  "message_response": {
+    "message": "success"
+  },
+  "data_response": {
+    "transaction": {
+      "order_number": "211422",
+      "free": null,
+      "transaction_id": 211422,
+      "status_name": "Aprovada",
+      "status_id": 6,
+      "token_transaction": "ab9086b77b5d73b8b9a48c0f0ecec9f6",
+      "payment": {
+        "price_payment": "191.37",
+        "price_original": "184.0",
+        "payment_response": "CAPTURED",
+        "url_payment": null,
+        "tid": "2190367361891520",
+        "split": 3,
+        "payment_method_id": 3,
+        "payment_method_name": "Visa",
+        "linha_digitavel": null
+      },
+      "customer": {
+        "name": "Abelardo Campos",
+        "company_name": "",
+        "trade_name": "",
+        "cnpj": ""
+      }
+    }
+  }
+}

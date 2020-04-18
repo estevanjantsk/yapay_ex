@@ -3,6 +3,7 @@ defmodule YapayEx.Order.Payment do
   Payment struct definition.
   """
 
+  @derive Jason.Encoder
   @enforce_keys ~w(payment_method_id)a
   defstruct ~w(
     payment_method_id billet_date_expiration card_name card_number card_expdate_month card_expdate_year card_cvv split
