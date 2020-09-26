@@ -3,16 +3,17 @@ defmodule YapayEx do
   Documentation for `YapayEx`.
   """
 
-  @doc """
-  Hello world.
+  alias YapayEx.{Order, Request}
 
-  ## Examples
+  def create_order(%Order{} = order) do
+    endpoint = "/transactions/payment"
 
-      iex> YapayEx.hello()
-      :world
+    case Request.post(endpoint, order) do
+      {:ok, %{status: status, body: body}} when status in 200..299 ->
+        {:ok, status, body}
 
-  """
-  def hello do
-    :world
+      {_, %{status: status, body: body}} ->
+        {:error, status, body}
+    end
   end
 end

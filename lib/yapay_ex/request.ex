@@ -5,7 +5,7 @@ defmodule YapayEx.Request do
 
   use Tesla
 
-  alias YapayEx.{Config, Order}
+  alias YapayEx.Config
 
   plug(
     Tesla.Middleware.BaseUrl,
@@ -21,18 +21,4 @@ defmodule YapayEx.Request do
   plug(Tesla.Middleware.JSON)
 
   adapter(Tesla.Adapter.Hackney, recv_timeout: 30_000)
-
-  @spec create_order(YapayEx.Order.t()) ::
-          {:ok, Integer.t(), Map.t()} | {:error, Integer.t(), Map.t()}
-  def create_order(%Order{} = order) do
-    endpoint = "/transactions/payment"
-
-    case post(endpoint, %Order{} = order) do
-      {:ok, %{status: status, body: body}} when status in 200..299 ->
-        {:ok, status, body}
-
-      {_, %{status: status, body: body}} ->
-        {:error, status, body}
-    end
-  end
 end
