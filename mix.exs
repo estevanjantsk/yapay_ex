@@ -26,7 +26,7 @@ defmodule YapayEx.MixProject do
       {:bypass, "~> 1.0", only: [:test]},
       {:credo, "~> 1.3.0", only: [:dev, :test]},
       {:hackney, "1.15.2"},
-      {:tesla, "~> 1.3.3"}
+      {:finch, "~> 0.3"}
     ]
   end
 end
