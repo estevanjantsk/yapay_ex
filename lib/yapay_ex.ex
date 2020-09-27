@@ -3,7 +3,18 @@ defmodule YapayEx do
   Documentation for `YapayEx`.
   """
 
+  use Application
+
   alias YapayEx.{Order, Request}
+
+  def start(_type, _args) do
+    children = [
+      {Finch, name: YapayEx.Finch}
+    ]
+
+    opts = [strategy: :one_for_one, name: YapayEx.Supervisor]
+    Supervisor.start_link(children, opts)
+  end
 
   def create_order(%Order{} = order) do
     endpoint = "/transactions/payment"
