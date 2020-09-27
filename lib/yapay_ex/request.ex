@@ -2,23 +2,36 @@ defmodule YapayEx.Request do
   @moduledoc """
   Implement functions to request Yapay API.
   """
-
-  use Tesla
-
   alias YapayEx.Config
 
-  plug(
-    Tesla.Middleware.BaseUrl,
+  def child_spec do
+    {Finch,
+     name: __MODULE__,
+     pools: %{
+       get_domain() => [size: pool_size()]
+     }}
+  end
+
+  def post(endpoint, order) do
+    :post
+    |> Finch.build(
+      "#{get_domain()}#{endpoint}",
+      [{"Content-Type", "application/json"}],
+      encode_body(order)
+    )
+    |> Finch.request(__MODULE__)
+  end
+
+  defp pool_size, do: 25
+
+  defp get_domain do
     System.get_env("MIX_ENV", "test")
-    |> String.to_existing_atom()
+    |> String.to_atom()
     |> Config.domain_for()
-  )
+  end
 
-  plug(Tesla.Middleware.Headers, [
-    {"Content-Type", "application/json"}
-  ])
-
-  plug(Tesla.Middleware.JSON)
-
-  adapter(Tesla.Adapter.Hackney, recv_timeout: 30_000)
+  defp encode_body(content) do
+    content
+    |> Jason.encode!()
+  end
 end

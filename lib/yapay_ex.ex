@@ -5,11 +5,12 @@ defmodule YapayEx do
 
   use Application
 
+  alias Finch.Response
   alias YapayEx.{Order, Request}
 
   def start(_type, _args) do
     children = [
-      {Finch, name: YapayEx.Finch}
+      YapayEx.Request.child_spec()
     ]
 
     opts = [strategy: :one_for_one, name: YapayEx.Supervisor]
@@ -20,10 +21,14 @@ defmodule YapayEx do
     endpoint = "/transactions/payment"
 
     case Request.post(endpoint, order) do
-      {:ok, %{status: status, body: body}} when status in 200..299 ->
+      {:ok, %Response{status: status, body: body}} when status in 200..299 ->
+        body =
+          body
+          |> Jason.decode!()
+
         {:ok, status, body}
 
-      {_, %{status: status, body: body}} ->
+      {_, %Response{status: status, body: body}} ->
         {:error, status, body}
     end
   end
