@@ -7,7 +7,7 @@ defmodule YapayEx.Config do
 
   def domain_for(:development), do: "https://api.intermediador.sandbox.yapay.com.br/api/v3"
 
-  def domain_for(:test), do: System.fetch_env!("YAPAY_DOMAIN") <> "/api/v3"
+  def domain_for(:test), do: "http://localhost:1337/api/v3"
 
   @doc """
 
