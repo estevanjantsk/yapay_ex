@@ -3,11 +3,11 @@ defmodule YapayEx.Config do
   Defines Yapay configs for domain by each env, transaction statuses, etc.
   """
 
-  def domain_for(:production), do: "https://api.intermediador.yapay.com.br/api/v3"
+  def domain_for(:prod), do: "https://api.intermediador.yapay.com.br/api/v3"
 
-  def domain_for(:development), do: "https://api.intermediador.sandbox.yapay.com.br/api/v3"
+  def domain_for(:dev), do: "https://api.intermediador.sandbox.yapay.com.br/api/v3"
 
-  def domain_for(:test), do: "http://localhost:1337/api/v3"
+  def domain_for(:test), do: System.fetch_env!("YAPAY_DOMAIN") <> "/api/v3"
 
   @doc """
 

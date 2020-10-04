@@ -5,11 +5,10 @@ defmodule YapayEx.Request do
   alias YapayEx.Config
 
   def child_spec do
-    {Finch,
-     name: __MODULE__,
-     pools: %{
-       get_domain() => [size: pool_size()]
-     }}
+    {
+      Finch,
+      name: __MODULE__
+    }
   end
 
   def post(endpoint, order) do
@@ -22,12 +21,8 @@ defmodule YapayEx.Request do
     |> Finch.request(__MODULE__)
   end
 
-  defp pool_size, do: 25
-
   defp get_domain do
-    System.get_env("MIX_ENV", "test")
     Config.domain_for(Mix.env())
-    |> Config.domain_for()
   end
 
   defp encode_body(content) do
