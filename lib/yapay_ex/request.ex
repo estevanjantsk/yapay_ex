@@ -26,7 +26,7 @@ defmodule YapayEx.Request do
 
   defp get_domain do
     System.get_env("MIX_ENV", "test")
-    |> String.to_atom()
+    Config.domain_for(Mix.env())
     |> Config.domain_for()
   end
 
