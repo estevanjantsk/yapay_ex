@@ -6,8 +6,9 @@ defmodule YapayExTest do
 
   describe "create_order/1" do
     setup do
-      bypass = Bypass.open(port: 1337)
-
+      bypass = Bypass.open()
+      endpoint = yapay_endpoint(bypass)
+      System.put_env("YAPAY_DOMAIN", endpoint)
       {:ok, bypass: bypass}
     end
 
@@ -30,5 +31,7 @@ defmodule YapayExTest do
 
       assert {:ok, 200, ^decoded_response} = YapayEx.create_order(order)
     end
+
+    defp yapay_endpoint(%{port: port}), do: "http://localhost:#{port}"
   end
 end
