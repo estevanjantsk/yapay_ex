@@ -22,9 +22,7 @@ defmodule YapayEx do
 
     case Request.post(endpoint, order) do
       {:ok, %Response{status: status, body: body}} when status in 200..299 ->
-        body =
-          body
-          |> Jason.decode!()
+        body = Jason.decode!(body)
 
         {:ok, status, body}
 
